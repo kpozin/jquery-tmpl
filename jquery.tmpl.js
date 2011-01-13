@@ -34,6 +34,7 @@
             var datum = newItem.data[propName];
             if (datum && datum instanceof jQuery) {
                 datum = datum.outerHTML();
+                datum = jQuery("<div>").html(datum).html();
                 newItem.data[propName] = datum;
             }
         }
