@@ -27,6 +27,17 @@
 			html: tiHtml,
 			update: tiUpdate
 		};
+        
+        var dataProps = Object.getOwnPropertyNames(newItem.data);
+        for (var i = 0; i < dataProps.length; ++i) {
+            var propName = dataProps[i];
+            var datum = newItem.data[propName];
+            if (datum && datum instanceof jQuery) {
+                datum = jQuery("<div>").html(datum).html();
+                newItem.data[propName] = datum;
+            }
+        }
+        
 		if ( options ) {
 			jQuery.extend( newItem, options, { nodes: [], parent: parentItem });
 		}
